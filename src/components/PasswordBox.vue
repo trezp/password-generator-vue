@@ -1,9 +1,11 @@
-<script setup>
-
+<script>
+  export default {
+    props: ['password']
+  }
 </script>
   
 <template>
-  <input type="text" class="password-field"/>
+  <input type="text" :value="password" class="password-field"/>
 </template>
 
 <style scoped>
