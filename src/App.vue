@@ -43,4 +43,11 @@ export default {
 </template>
 
 <style scoped>
+  .container {
+    display: flex;
+  }
+
+  h1 span {
+    color: green;
+  }
 </style>
