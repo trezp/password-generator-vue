@@ -11,23 +11,23 @@ export default {
     return {
       password1: '',
       password2: '',
-      numOfChars: '15'
+      passLength: 15
     }
   },
   methods: {
     getRandomChar(arr){
       return arr[Math.floor(Math.random() * arr.length)]; 
     },
-    generatePassword(charLength){
+    generatePassword(passLength = this.passLength){
       let password = '';
-      for(let i = 0; i < charLength; i++){
+      for(let i = 0; i < passLength; i++){
         password += this.getRandomChar(characters);
       }
       return password; 
     },
     getPasswords() {
-      this.password1 = this.generatePassword(this.numOfChars);
-      this.password2 = this.generatePassword(this.numOfChars);
+      this.password1 = this.generatePassword();
+      this.password2 = this.generatePassword();
     }
   }
 }
@@ -36,49 +36,36 @@ export default {
 <template>
   <h1>Generate a <span>Random Password</span></h1>
   <h2>Never use an insecure password again</h2>
+  <button @click="getPasswords" class="btn-password">Generate Passwords</button>
   <div class="container-pw-display">
     <PasswordBox :password="password1" />
     <PasswordBox :password="password2"/>
   </div>
-  <label for="numOfChars" class="label-password">Password Length:</label>
-  <select v-model="numOfChars" id="numOfChars" class="select-password">
-    <option value="10">10</option>
-    <option value="15" selected>15</option>
-    <option value="20">20</option>
-  </select>
-  <button @click="getPasswords" class="btn-password">Generate Passwords</button>
 </template>
 
 <style scoped>
-  body {
+  h1 {
     font-family: 'Karla', sans-serif;
+    font-weight: 800;
+  }
+
+  h1 span {
+    color: #F43F5E;
+    display: block;
+  }
+
+  h2 {
+    color: #D5D4D8;
   }
   .container-pw-display {
     display: flex;
   }
-
-  h1 {
-    font-weight: 800;
-    font-size: 40px;
-  }
-
-  h1 span {
-    color: #E11D48;
-  }
-  .label-password {
-    font-size: 18px;
-    font-weight: bold;
-    display: block;
-  }
-
-  .select-password {
-    width: 25%;    
-    padding: .75em;
-    border-radius: 5px;
-  }
-
   .btn-password {
-    display: block;
-    margin: 1.5em auto;
+    margin: 1.5em 0 2em 0;
+    color: #fff;
+    background: #F43F5E;
+    border-radius: 6px;
+    width: 191px;
   }
+
 </style>

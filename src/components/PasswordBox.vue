@@ -10,14 +10,16 @@
 
 <style scoped>
   .password-field {
-    background-color: lightgray;
+    background-color: #273549;
     width: 50%;
     height: 3em;
     line-height: 3em;
     border: none;
-    margin: 1em;
-    color: black;
+    margin-right: 1em;
+    color: white;
+    text-align: center;
     border-radius: 10px;
+    font-size: 1.2em;
   }
 </style>
   
