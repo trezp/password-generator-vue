@@ -9,8 +9,7 @@ export default {
   },
   data() {
     return {
-      password1: '',
-      password2: '',
+      passwords: ['', ''],
       passLength: 15
     }
   },
@@ -26,8 +25,9 @@ export default {
       return password; 
     },
     getPasswords() {
-      this.password1 = this.generatePassword();
-      this.password2 = this.generatePassword();
+      this.passwords = [];
+      this.passwords.push(this.generatePassword());
+      this.passwords.push(this.generatePassword());
     }
   }
 }
@@ -37,10 +37,9 @@ export default {
   <h1>Generate a <span>Random Password</span></h1>
   <h2>Never use an insecure password again</h2>
   <button @click="getPasswords" class="btn-password">Generate Passwords</button>
-  <div class="container-pw-display">
-    <PasswordBox :password="password1" />
-    <PasswordBox :password="password2"/>
-  </div>
+  <ul class="container-pw-display">
+    <PasswordBox :password="password" v-for="password in passwords" :key="password" />
+  </ul>
 </template>
 
 <style scoped>
@@ -58,6 +57,7 @@ export default {
     color: #D5D4D8;
   }
   .container-pw-display {
+    padding: 0; 
     display: flex;
   }
   .btn-password {

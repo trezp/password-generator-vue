@@ -5,11 +5,14 @@
 </script>
   
 <template>
-  <div class="password-field">{{password}}</div>
+  <li class="password-field">
+    {{ password }}
+  </li>
 </template>
 
 <style scoped>
   .password-field {
+    list-style-type: none;
     background-color: #273549;
     width: 50%;
     height: 3em;
